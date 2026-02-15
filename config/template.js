@@ -1,5 +1,5 @@
 const managedBlock =
-`#!MANAGED-CONFIG https://jv20.vercel.app/index.html interval=86400 strict=true
+`#!MANAGED-CONFIG https://project-nine-henna-78.vercel.app/index.html interval=86400 strict=true
 `;
 
 const generalBlock =
