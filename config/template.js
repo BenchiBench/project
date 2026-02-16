@@ -15,8 +15,8 @@ udp-relay = true
 
 function buildProxyGroup(proxyNames) {
   return `[Proxy Group]
-🚀 节点选择 = select, ${proxyNames.join(', ')}, 🌏 自动选择, 🔄 故障切换, DIRECT
-🌏 自动选择 = url-test, ${proxyNames.join(', ')}, url=http://www.gstatic.com/generate_204, interval=300, tolerance=150
+🚀 节点选择 = select, ${proxyNames.join(', ')}, ♻️ 自动选择, 🔄 故障切换, DIRECT
+♻️ 自动选择 = url-test, ${proxyNames.join(', ')}, url=http://www.gstatic.com/generate_204, interval=300, tolerance=150
 🔄 故障切换 = fallback, ${proxyNames.join(', ')}, url=http://www.gstatic.com/generate_204, interval=180
 🚫 广告拦截 = select, REJECT, DIRECT
 `;
