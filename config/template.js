@@ -27,6 +27,15 @@ const ruleBlock =
 DOMAIN-SUFFIX,local,DIRECT
 IP-CIDR,127.0.0.0/8,DIRECT
 GEOIP,CN,DIRECT
+
+#广告拦截
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,adnxs.com,REJECT
+DOMAIN-SUFFIX,admob.com,REJECT
+DOMAIN-SUFFIX,umeng.com,REJECT
+
 FINAL,🚀 节点选择
 `;
 
