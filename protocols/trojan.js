@@ -3,7 +3,7 @@ const { appendIf } = require('../utils');
 function parse(line) {
   try {
     const u = new URL(line);
-    const name = (decodeURIComponent(u.hash.slice(1)) || 'trojan').replace(/[\r\n\t]/g, '').trim();
+    const name = decodeURIComponent(u.hash.slice(1) || 'trojan').trim();
 
     const out = [
       `${name} = trojan`,
