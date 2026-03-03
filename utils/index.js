@@ -10,17 +10,6 @@ const decodeBase64 = s => {
   }
 };
 
-const cleanName = name => {
-  let raw = decodeURIComponent((name || 'node'))
-    .replace(/[\r\n\t]/g, '')
-    .trim();
-  raw = raw
-    .replace(/[^\w\-\u4e00-\u9fa5]/g, '_')
-    .replace(/_+/g, '_')
-    .replace(/^_+|_+$/g, '');
-  return raw || 'node';
-};
-
 const appendIf = (arr, key, val) => {
   if (val !== undefined && val !== null && val !== '')
     arr.push(`${key}=${val}`);
@@ -28,6 +17,5 @@ const appendIf = (arr, key, val) => {
 
 module.exports = {
   decodeBase64,
-  cleanName,
   appendIf
 };
