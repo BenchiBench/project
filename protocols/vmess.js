@@ -4,8 +4,7 @@ function parse(line) {
   try {
     const jsonStr = decodeBase64(line.replace('vmess://', '').trim());
     const j = JSON.parse(jsonStr);
-
-    const name = (decodeURIComponent(j.ps || j.add || 'vmess')).replace(/[\r\n\t]/g, '').trim();
+    const name = decodeURIComponent(j.ps || j.add || 'vmess').trim();
 
     const out = [
       `${name} = vmess`,
