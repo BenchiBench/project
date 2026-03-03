@@ -1,3 +1,4 @@
+// utils.js
 const decodeBase64 = s => {
   try {
     if (!s) return '';
