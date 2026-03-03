@@ -1,0 +1,42 @@
+特性
+支持协议：
+VMess
+VLESS
+Hysteria2 / hy2
+Trojan
+SS / SS2022
+AnyTLS
+节点去重，保证配置干净
+输出 Surfboard 配置文件：dist/index.html
+模块化设计，便于新增协议解析器
+只依赖 Node.js，无额外依赖
+
+配置说明
+[General]：全局设置
+[Proxy]：节点列表，每个节点解析对应协议
+[Proxy Group]：
+🚀 节点选择：手动选择节点
+🌏 自动选择：测速自动选择最佳节点
+🔄 故障切换：节点不可用时自动切换
+🚫 广告拦截：可选择 REJECT 或 DIRECT
+[Rule]：规则，国内直连，其余走代理
+去重策略
+使用节点严格指纹（除节点名称外的其他信息排序生成）
+相同指纹的节点只保留一个，避免重复配置
+
+project/
+├─ app.js
+├─ node.txt
+├─ utils/
+│  └─ index.js
+├─ protocols/
+│  ├─ vmess.js
+│  ├─ vless.js
+│  ├─ trojan.js
+│  ├─ anytls.js
+│  ├─ hysteria2.js
+│  └─ ss.js
+├─ dist/
+│  └─ index.html
+└─ README.md
+
