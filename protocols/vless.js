@@ -3,11 +3,10 @@ const { appendIf } = require('../utils');
 function parse(line) {
   try {
     const u = new URL(line);
-    const name = (decodeURIComponent(u.hash.slice(1)) || 'vless').replace(/[\r\n\t]/g, '').trim();
+    const name = decodeURIComponent(u.hash.slice(1) || 'vless').trim();
     const uuid = decodeURIComponent(u.username);
     const host = u.hostname;
     const port = u.port;
-
     const params = u.searchParams;
 
     const out = [
@@ -26,8 +25,7 @@ function parse(line) {
     if (type === 'ws') {
       out.push('ws=true');
       appendIf(out, 'ws-path', params.get('path'));
-      const wsHost = params.get('host');
-      if (wsHost) out.push(`ws-headers=Host:${wsHost}`);
+      if (params.get('host')) out.push(`ws-headers=Host:${params.get('host')}`);
     }
 
     if (type === 'grpc') appendIf(out, 'grpc-service-name', params.get('serviceName'));
