@@ -4,8 +4,7 @@ function parse(line) {
   try {
     const raw = line.replace('ss://', '').trim();
     const [mainPart, hashPart] = raw.split('#');
-
-    const name = (decodeURIComponent(hashPart || 'ss')).replace(/[\r\n\t]/g, '').trim();
+    const name = decodeURIComponent(hashPart || 'ss').trim();
 
     let decoded = mainPart;
     if (!mainPart.includes('@')) decoded = decodeBase64(mainPart);
