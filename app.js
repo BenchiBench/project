@@ -7,6 +7,7 @@ const { managedBlock, generalBlock, buildProxyGroup, ruleBlock } = require('./co
 const parsers = [
   require('./protocols/vmess'),
   require('./protocols/hysteria2'),
+  require('./protocols/vmess'),
   require('./protocols/trojan'),
   require('./protocols/anytls'),
   require('./protocols/ss')
