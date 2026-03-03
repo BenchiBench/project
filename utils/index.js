@@ -1,4 +1,3 @@
-// utils.js
 const decodeBase64 = s => {
   try {
     if (!s) return '';
@@ -16,7 +15,4 @@ const appendIf = (arr, key, val) => {
     arr.push(`${key}=${val}`);
 };
 
-module.exports = {
-  decodeBase64,
-  appendIf
-};
+module.exports = { decodeBase64, appendIf };
