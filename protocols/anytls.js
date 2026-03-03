@@ -3,14 +3,8 @@ const { appendIf } = require('../utils');
 function parse(line) {
   try {
     const u = new URL(line);
-    const name = decodeURIComponent(u.hash.slice(1) || 'anytls').trim();
-
-    const out = [
-      `${name} = anytls`,
-      u.hostname,
-      u.port,
-      `password=${decodeURIComponent(u.username)}`
-    ];
+    const name = decodeURIComponent(u.hash.slice(1)) || 'node';
+    const out = [`${name} = anytls`, u.hostname, u.port, `password=${decodeURIComponent(u.username)}`];
 
     appendIf(out, 'sni', u.searchParams.get('sni'));
     appendIf(out, 'alpn', u.searchParams.get('alpn'));
@@ -22,7 +16,4 @@ function parse(line) {
   }
 }
 
-module.exports = {
-  prefixes: ['anytls://'],
-  parse
-};
+module.exports = { prefixes: ['anytls://'], parse };
