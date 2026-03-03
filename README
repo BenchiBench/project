@@ -24,19 +24,25 @@ AnyTLS
 使用节点严格指纹（除节点名称外的其他信息排序生成）
 相同指纹的节点只保留一个，避免重复配置
 
-project/
-├─ app.js
-├─ node.txt
-├─ utils/
-│  └─ index.js
-├─ protocols/
-│  ├─ vmess.js
-│  ├─ vless.js
-│  ├─ trojan.js
-│  ├─ anytls.js
-│  ├─ hysteria2.js
-│  └─ ss.js
-├─ dist/
-│  └─ index.html
-└─ README.md
-
+build-tool/
+│
+├── app.js
+├── node.txt
+├── package.json
+│
+├── config/
+│   └── template.js           # 包含 managedBlock, generalBlock, 等配置模板
+│
+├── protocols/
+│   ├── vmess.js              # 解析 vmess 协议
+│   ├── hysteria2.js          # 解析 hysteria2 协议
+│   ├── vless.js              # 解析 vless 协议
+│   ├── trojan.js             # 解析 trojan 协议
+│   ├── anytls.js             # 解析 anytls 协议
+│   └── ss.js                 # 解析 ss 协议
+│
+├── utils/
+│   └── index.js              # 提供 decodeBase64 和 appendIf 辅助函数
+│
+└── dist/
+    └── index.html            # 构建输出的 Surfboard 配置文件
