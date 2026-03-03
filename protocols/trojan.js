@@ -1,10 +1,10 @@
-const { cleanName, appendIf } = require('../utils');
+const { appendIf } = require('../utils');
 
 function parse(line) {
   try {
     const u = new URL(line);
+    const name = (decodeURIComponent(u.hash.slice(1)) || 'trojan').replace(/[\r\n\t]/g, '').trim();
 
-    const name = cleanName(decodeURIComponent(u.hash.slice(1)));
     const out = [
       `${name} = trojan`,
       u.hostname,
@@ -14,9 +14,7 @@ function parse(line) {
 
     appendIf(out, 'sni', u.searchParams.get('peer') || u.searchParams.get('sni'));
     appendIf(out, 'alpn', u.searchParams.get('alpn'));
-    appendIf(out, 'skip-cert-verify',
-      u.searchParams.get('allowInsecure') === '1' ? 'true' : 'false'
-    );
+    appendIf(out, 'skip-cert-verify', u.searchParams.get('allowInsecure') === '1' ? 'true' : 'false');
 
     return out.join(', ');
   } catch {
