@@ -35,15 +35,12 @@ const proxyLines = raw
   .map(l => l.trim())
   .filter(Boolean)
   .map(parseNode)
-  .filter(Boolean)
-  .map((l, i) => l.replace(/^([^=]+)=/, `$1_${i + 1} =`));
+  .filter(Boolean);
 
 const proxyNames = proxyLines.map(l => l.split('=')[0].trim());
 
 const proxyBlock = `[Proxy]\n${proxyLines.join('\n')}\n`;
-
 const groupBlock = buildProxyGroup(proxyNames);
-
 const result = `${managedBlock}${generalBlock}\n${proxyBlock}\n${groupBlock}\n${ruleBlock}`;
 
 fs.writeFileSync(OUT_FILE, result, 'utf8');
