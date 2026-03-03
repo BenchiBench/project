@@ -4,7 +4,7 @@ function parse(line) {
   try {
     line = line.replace('hy2://', 'hysteria2://');
     const u = new URL(line);
-    const name = (decodeURIComponent(u.hash.slice(1)) || 'hysteria2').replace(/[\r\n\t]/g, '').trim();
+    const name = decodeURIComponent(u.hash.slice(1) || 'hysteria2').trim();
 
     const out = [
       `${name} = hysteria2`,
