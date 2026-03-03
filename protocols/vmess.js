@@ -1,11 +1,12 @@
-const { decodeBase64, cleanName, appendIf } = require('../utils');
+const { decodeBase64, appendIf } = require('../utils');
 
 function parse(line) {
   try {
     const jsonStr = decodeBase64(line.replace('vmess://', '').trim());
     const j = JSON.parse(jsonStr);
 
-    const name = cleanName(j.ps || j.add || 'vmess');
+    const name = (decodeURIComponent(j.ps || j.add || 'vmess')).replace(/[\r\n\t]/g, '').trim();
+
     const out = [
       `${name} = vmess`,
       j.add,
